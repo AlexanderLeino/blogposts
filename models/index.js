@@ -1,6 +1,7 @@
 const User = require('./userData')
 const blogPosts = require('./blogPostsData')
 
+
 blogPosts.belongsTo(User, {
     foreignKey: 'postCreator'
 })
