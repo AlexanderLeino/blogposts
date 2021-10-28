@@ -17,7 +17,7 @@ app.use(express.static('public'))
 
 app.use(controllers)
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     console.log(`Sequelize connected!`)
     
 })
