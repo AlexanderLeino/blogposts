@@ -15,6 +15,11 @@ router.get('/dashboard', (req, res) => res.render('dashboard', {
   secondarytitle:'Your Dashboard'  
 
 }))
+
+router.get('/newUser', (req, res) => res.render('signUpPage', {
+  secondarytitle: 'The Tech Blog',
+  signingIn: false,
+}))
 //When the user is logged in then the login button dissappears from the dashboard view
 
 //TODO: when on the dashboard page if the user clicks on the NEW POST button then the user is redirected to /dashboard/new
@@ -29,14 +34,17 @@ router.get('/dashboard', (req, res) => res.render('dashboard', {
 //This route gets the logout page
 router.get('/logout', (req, res) => res.render('home', {
   secondarytitle: 'The Tech Blog'
-}))
+  })
+
+)
 //TODO: When the user logs out they are redirected to the home page
 
 
 // This route gets the login page
 router.get('/login', (req, res) => res.render('login', {
-    secondarytitle: 'The Tech Blog'
-}))
+    secondarytitle: 'The Tech Blog',
+    signingIn: true}
+))
 //TODO: Once the user logins in they need to be redirected to the dashboard
 
 //TODO: On the login page if the user clicks on the Sign Up Instead then we redirect them to the Sign Up box and give them the option to log in instead in place of where the sign up instead click link is. 
