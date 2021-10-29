@@ -5,10 +5,11 @@ class blogPosts extends Model{}
 blogPosts.init(
 {
     id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         primaryKey:true,
+        autoIncrement: true
     },
     title: {
         type: DataTypes.STRING,

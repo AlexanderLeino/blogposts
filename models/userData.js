@@ -8,7 +8,8 @@ class User extends Model {
   }
 }
 
-User.init({
+User.init(
+  {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -24,12 +25,12 @@ User.init({
           msg: 'Please enter a valid UserName'
         }
       },
-    },
-    hashedPassword: {
-      type: DataTypes.STRING(64),
-      is: /^[0-9a-f]{64}$/i,
-      validate: {
-        len: [5]
+      hashedPassword: {
+        type: DataTypes.STRING(64),
+        is: /^[0-9a-f]{64}$/i,
+        validate: {
+          len: [5]
+        },
       },
     },
   }, 
@@ -44,8 +45,8 @@ User.init({
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'User',
   }
 )
 
-module.exports = User
+module.exports = User;
