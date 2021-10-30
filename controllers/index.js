@@ -28,7 +28,7 @@ router.get('/dashboard', async (req, res) => {
 
     
         res.render('dashboard', {
-          secondarytitle: 'Dashboard',
+          secondarytitle: 'Your Dashboard',
           posts: serializedBlogs 
         })
     }catch(e){
