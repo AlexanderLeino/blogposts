@@ -1,3 +1,5 @@
+const { User, blogPosts } = require('../models')
+
 const router = require('express').Router()
 // const slugify = require('slugify')
 
@@ -11,10 +13,18 @@ router.get('/', (req, res) =>{
  })})
 
 //This route gets the dashboard page
-router.get('/dashboard', (req, res) => res.render('dashboard', {
-  secondarytitle:'Your Dashboard',
-  
-}))
+router.get('/dashboard', async (req, res) => {
+    try{  
+
+        const allBlogPosts = await blogPosts.findAll()
+        res.status(200).json(allBlogPosts)
+      
+    } catch(e) {
+        res.json(e).status(404)
+    }
+
+})
+
 
 router.get('/newUser', (req, res) => res.render('signUpPage', {
   secondarytitle: 'The Tech Blog',

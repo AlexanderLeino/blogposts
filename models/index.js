@@ -4,12 +4,12 @@ const blogPosts = require('./blogPostsData')
 
 
 blogPosts.belongsTo(User, {
-    foreignKey: 'postCreator',
+    foreignKey: 'post_creator',
     onDelete: "CASCADE"
 });
 
 User.hasMany(blogPosts, {
-    foreignKey: 'user_id'
+    foreignKey: 'post_creator'
 })
 
 module.exports = {blogPosts, User}

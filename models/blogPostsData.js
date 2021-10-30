@@ -24,13 +24,6 @@ blogPosts.init(
         type: DataTypes.DATEONLY,
         defaultValue: Sequelize.NOW 
     },
-    postCreator: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'user',
-            key: "id"
-        }
-    },
 },
     {
     sequelize,
