@@ -5,24 +5,25 @@ const router = require('express').Router()
 
 
 // html routes
-router.get('/', (req, res) =>{
-
+router.get('/', async (req, res) =>{
+  try{  
+ 
+} catch(e) {
+    res.json(e).status(404)
+}
  res.render('home', {
-     secondarytitle:"The Tech Blog"
+     secondarytitle:"The Tech Blog",
+
      //TODO: This route needs to show ALL user posts regardless of who is signed in or not.
  })})
 
 //This route gets the dashboard page
 router.get('/dashboard', async (req, res) => {
-    try{  
-
-        const allBlogPosts = await blogPosts.findAll()
-        res.status(200).json(allBlogPosts)
-      
-    } catch(e) {
-        res.json(e).status(404)
-    }
-
+    
+res.render('dashboard', {
+  secondarytitle: 'Dashboard',
+  blogPosts
+})
 })
 
 
