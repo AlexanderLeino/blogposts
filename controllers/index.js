@@ -1,3 +1,4 @@
+
 const { User, blogPosts } = require('../models')
 
 const router = require('express').Router()
@@ -19,11 +20,20 @@ router.get('/', async (req, res) =>{
 
 //This route gets the dashboard page
 router.get('/dashboard', async (req, res) => {
+    try {
+        const allBlog = await blogPosts.findAll()
+        const serializedBlogs = allBlog.map( post => {
+          return post.get({ plain: true })
+        })
+
     
-res.render('dashboard', {
-  secondarytitle: 'Dashboard',
-  blogPosts
-})
+        res.render('dashboard', {
+          secondarytitle: 'Dashboard',
+          posts: serializedBlogs 
+        })
+    }catch(e){
+      res.json(e)
+    }
 })
 
 
