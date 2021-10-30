@@ -12,8 +12,8 @@ router.get('/', (req, res) =>{
 
 //This route gets the dashboard page
 router.get('/dashboard', (req, res) => res.render('dashboard', {
-  secondarytitle:'Your Dashboard'  
-
+  secondarytitle:'Your Dashboard',
+  
 }))
 
 router.get('/newUser', (req, res) => res.render('signUpPage', {
