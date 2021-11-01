@@ -1,36 +1,31 @@
 
 const { User, blogPost } = require('../models')
-
 const router = require('express').Router()
-// const slugify = require('slugify')
+
 
 
 // html routes
 router.get('/', async (req, res) =>{
   try{  
- 
+    const allBlogs = await blogPost.findAll()
+    const serializedBlogs = allBlogs.map( post => {
+      return post.get({ plain: true })
+    })
+
+
+    res.render('Home', {
+      secondarytitle: 'Home',
+      posts: serializedBlogs 
+    })
 } catch(e) {
     res.json(e).status(404)
-}
- res.render('home', {
-     secondarytitle:"The Tech Blog",
+}})
 
-     //TODO: This route needs to show ALL user posts regardless of who is signed in or not.
- })})
 
 //This route gets the dashboard page
 router.get('/dashboard', async (req, res) => {
     try {
-        const allBlogs = await blogPost.findAll()
-        const serializedBlogs = allBlogs.map( post => {
-          return post.get({ plain: true })
-        })
-
-    
-        res.render('dashboard', {
-          secondarytitle: 'Your Dashboard',
-          posts: serializedBlogs 
-        })
+       
     }catch(e){
       res.json(e)
     }
