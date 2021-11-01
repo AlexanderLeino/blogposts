@@ -1,5 +1,5 @@
 
-const { User, blogPosts } = require('../models')
+const { User, blogPost } = require('../models')
 
 const router = require('express').Router()
 // const slugify = require('slugify')
@@ -21,8 +21,8 @@ router.get('/', async (req, res) =>{
 //This route gets the dashboard page
 router.get('/dashboard', async (req, res) => {
     try {
-        const allBlog = await blogPosts.findAll()
-        const serializedBlogs = allBlog.map( post => {
+        const allBlogs = await blogPost.findAll()
+        const serializedBlogs = allBlogs.map( post => {
           return post.get({ plain: true })
         })
 
